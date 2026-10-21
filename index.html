@@ -61,6 +61,27 @@
 
           <h1 class="judul-utama">Haflah Khotmil<br />Qur’an</h1>
           <p class="tema-wisuda">Merayakan ikhtiar,<br />merawat cahaya Al-Qur’an.</p>
+
+          
+          <!-- BAGIAN PERSONALISASI NAMA TAMU DINAMIS -->
+        <div style="background: #fffcf7; padding: 18px 24px; border-radius: 8px; border: 1px solid #e4d8c9; margin-top: 10px;">
+          <p style="font-size: 11px; font-weight: 600; color: #591e2b; margin-bottom: 4px; text-transform: uppercase;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+          <h2 id="nama-tamu" style="font-family: 'Cormorant Garamond-SemiBold', serif; font-size: 24px; color: #591e2b; margin: 0;">Tamu Undangan</h2>
+        </div>
+        <!-- SCRIPT JS UNTUK MENANGKAP NAMA TAMU DARI URL -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+    const elemenNama = document.getElementById('nama-tamu');
+    
+    if (namaTamu && elemenNama) {
+      // Mengganti tanda plus (+) atau format spasi pada URL menjadi spasi normal
+      elemenNama.innerText = decodeURIComponent(namaTamu.replace(/\+/g, ' '));
+    }
+  });
+</script>
+          
           <p class="pengantar-acara">
             Dengan penuh syukur, kami mengundang Bapak/Ibu untuk hadir dalam Wisuda Santri Angkatan Ke-IV Pondok Pesantren Tahfidz Al-Qur’an Al-Hakimiah.
           </p>
