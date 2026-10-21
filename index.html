@@ -13,6 +13,43 @@
   <link rel="stylesheet" href="GAIV_Global.css" />
   <link rel="stylesheet" href="GAIV_Style.css" />
   <link rel="icon" type="image/png" href="img/Alhakimiah.png">
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle-mobile');
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.navbar a');
+
+    // 1. Fungsi Tombol Hamburger: Buka / Tutup Menu Mobile
+    if (menuToggle && navbar) {
+      menuToggle.addEventListener('click', () => {
+        navbar.classList.toggle('is-active');
+        
+        // Ubah atribut aria-expanded untuk aksesibilitas
+        const isOpen = navbar.classList.contains('is-active');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // 2. Otomatis tutup menu mobile jika salah satu tautan diklik
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbar.classList.contains('is-active')) {
+          navbar.classList.remove('is-active');
+        }
+      });
+    });
+
+    // 3. Menutup menu jika pengguna mengklik area luar menu
+    document.addEventListener('click', (event) => {
+      if (navbar && navbar.classList.contains('is-active')) {
+        if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
+          navbar.classList.remove('is-active');
+        }
+      }
+    });
+  });
+</script>
 </head>
 <body>
   <div class="al-hakimiah-undangan">
@@ -98,7 +135,7 @@
             <a href="#waktu-tempat" class="action-btn action-primary">
               <span class="action-label">Waktu &amp; tempat</span>
               <div class="icon-box-16">
-                <img class="vector-icon" src="img/arrow-down.svg" alt="Arah" {color-bg-card: #fffcf7;} />
+                <img class="vector-icon" src="img/arrow-down.svg" alt="Arah" />
               </div>
             </a>
             <a href="#pesan" class="action-btn action-secondary">
