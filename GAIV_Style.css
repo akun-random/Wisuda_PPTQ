@@ -150,6 +150,49 @@
   font-size: 12px;
 }
 
+/* 1. Mencegah konten tertutup oleh Header saat tombol ditekan */
+section[id] {
+  scroll-margin-top: 96px; /* Menyesuaikan tinggi header */
+}
+
+/* 2. Styling Menu Navigasi Mobile saat aktif */
+@media (max-width: 1023px) {
+  /* Header dibuat sticky agar navigasi mudah diakses */
+  .navigasi {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Tampilan menu dropdown saat hamburger diklik */
+  .navbar.is-active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 88px; /* Tepat di bawah header mobile */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-base);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 2px solid var(--color-border);
+    box-shadow: 0 10px 20px rgba(89, 30, 43, 0.08);
+  }
+
+  .navbar.is-active .tautan {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .navbar.is-active .action-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
 /* =========================================================
    1. NAVIGASI / HEADER
    ========================================================= */
